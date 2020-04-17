@@ -23,7 +23,7 @@ namespace RestApiWorkshop.Client
         private static async Task CmdGetBlogs()
         {
             var json = await ApiUrl
-                .AppendPathSegment("blogs")
+                .AppendPathSegment("items")
                 .GetStringAsync();
 
             /*
@@ -42,8 +42,8 @@ namespace RestApiWorkshop.Client
             OutputJson(json);
 
             var blogs = await ApiUrl
-                .AppendPathSegment("blogs")
-                .GetJsonAsync<Blog[]>();
+                .AppendPathSegment("items")
+                .GetJsonAsync<Item[]>();
 
             /*
              * .GetJsonAsync<Blog[]>() - Flurl utiliza Newtonsoft.Json para ler o retorno da chamada e já converter para o modelo do objeto. Todas as regras de parse/format se aplicam

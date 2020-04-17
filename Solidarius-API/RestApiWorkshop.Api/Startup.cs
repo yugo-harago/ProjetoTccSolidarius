@@ -1,9 +1,7 @@
-using System;
-using System.IO;
-using System.Reflection;
 using AutoMapper;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +9,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using RestApiWorkshop.Api.Configuration;
-using RestApiWorkshop.Api.Data;
+using SolidariusAPI.Api.Data;
+using System;
+using System.IO;
+using System.Reflection;
 
-namespace RestApiWorkshop.Api
+namespace SolidariusAPI.Api
 {
     public class Startup
     {
@@ -29,10 +29,22 @@ namespace RestApiWorkshop.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .AddFluentValidation(options =>
-                {
-                    options.RegisterValidatorsFromAssemblyContaining<Startup>();
-                });
+            .AddFluentValidation(options =>
+            {
+                options.RegisterValidatorsFromAssemblyContaining<Startup>();
+            });
+
+            // Mysql Connection Packages Mysql.Data; NHibernate
+            var connStr = Configuration.GetConnectionString("DefaultConnection");
+            var _sessionFactory = Fluently.Configure()
+                                      .Database(MySQLConfiguration.Standard.ConnectionString(connStr))
+                                      .Mappings(m => m.FluentMappings.AddFromAssembly(GetType().Assembly))
+                                      .BuildSessionFactory();
+            services.AddScoped(factory =>
+            {
+                return _sessionFactory.OpenSession();
+            });
+
 
             services.AddAutoMapper(GetType().Assembly);
 
@@ -49,15 +61,16 @@ namespace RestApiWorkshop.Api
                 options.IncludeXmlComments(xmlPath);
             });
 
-            services.AddDbContext<MyDatabase>(options =>
-            {
-                options.UseInMemoryDatabase("Workshop");
-            });
+            //services.AddDbContext<MyDatabase>(options =>
+            //{
+            //    options.UseInMemoryDatabase("Workshop");
+            //});
+
+            // REST
+            //services.AddMvc(options => options.EnableEndpointRouting = false)
+            //    .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
             services.AddScoped<IMyDatabase, MyDatabase>();
-
-            //services.AddAuthentication("Basic")
-            //    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", opts => { });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,14 +86,15 @@ namespace RestApiWorkshop.Api
             app.UseSwagger();
             app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API Documentation V1"));
 
+            // REST
+            // app.UseMvc();
             app.UseRouting();
 
-            //app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers()/*.RequireAuthorization()*/;
+                endpoints.MapControllers();
             });
 
             MyDatabaseSeeder.Seed(myDatabase);

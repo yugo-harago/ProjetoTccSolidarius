@@ -1,61 +1,68 @@
 ﻿using Bogus;
-using RestApiWorkshop.Api.Models;
+using SolidariusAPI.Api.Models;
 
-namespace RestApiWorkshop.Api.Data
+namespace SolidariusAPI.Api.Data
 {
     public class MyDatabaseSeeder
     {
         public static void Seed(IMyDatabase myDatabase)
         {
-            var faker = new Faker();
+            //var faker = new Faker();
 
-            var authors = new[]
-            {
-                new Author {Id = 1, Name = "Fulano"},
-                new Author {Id = 2, Name = "Beltrano"},
-                new Author {Id = 3, Name = "Cicrano"}
-            };
+            //var beneficiario = new[]
+            //{
+            //    new Beneficiario { Id = 1, Nome = "Fulano"},
+            //    new Beneficiario { Id = 2, Nome = "Beltrano"},
+            //    new Beneficiario { Id = 3, Nome = "Cicrano"}
+            //};
 
-            var blogs = new[]
-            {
-                new Blog {Id = 1, Url = "/my-blog", Author = faker.PickRandom(authors)},
-                new Blog {Id = 2, Url = "/your-blog", Author = faker.PickRandom(authors)},
-                new Blog {Id = 3, Url = "/their-blog", Author = faker.PickRandom(authors)},
-                new Blog {Id = 4, Url = "/our-blog", Author = faker.PickRandom(authors)},
-                new Blog {Id = 5, Url = "/his-blog", Author = faker.PickRandom(authors)}
-            };
+            //var items = new[]
+            //{
+            //    new Item { Id = 1, Descricao = "item 1"},
+            //    new Item { Id = 2, Descricao = "item 2"}
+            //};
 
-            var postId = 0;
-            var tagId = 0;
+            //var blogs = new[]
+            //{
+            //    new Blog {Id = 1, Url = "/my-blog", Author = faker.PickRandom(authors)},
+            //    new Blog {Id = 2, Url = "/your-blog", Author = faker.PickRandom(authors)},
+            //    new Blog {Id = 3, Url = "/their-blog", Author = faker.PickRandom(authors)},
+            //    new Blog {Id = 4, Url = "/our-blog", Author = faker.PickRandom(authors)},
+            //    new Blog {Id = 5, Url = "/his-blog", Author = faker.PickRandom(authors)}
+            //};
 
-            foreach (var blog in blogs)
-            {
-                for (var i = 0; i < faker.Random.Int(2, 10); i++)
-                {
-                    var post = new Post
-                    {
-                        Id = ++postId,
-                        Title = faker.Lorem.Sentence(range: 5),
-                        Content = faker.Lorem.Paragraphs()
-                    };
+            //var postId = 0;
+            //var tagId = 0;
 
-                    for (var j = 0; j < faker.Random.Int(1, 5); j++)
-                    {
-                        var tag = new Tag
-                        {
-                            Id = ++tagId,
-                            Value = faker.Random.Word()
-                        };
-                        post.Tags.Add(tag);
-                    }
+            //foreach (var blog in blogs)
+            //{
+            //    for (var i = 0; i < faker.Random.Int(2, 10); i++)
+            //    {
+            //        var post = new Post
+            //        {
+            //            Id = ++postId,
+            //            Title = faker.Lorem.Sentence(range: 5),
+            //            Content = faker.Lorem.Paragraphs()
+            //        };
 
-                    blog.Posts.Add(post);
-                }
-            }
+            //        for (var j = 0; j < faker.Random.Int(1, 5); j++)
+            //        {
+            //            var tag = new Tag
+            //            {
+            //                Id = ++tagId,
+            //                Value = faker.Random.Word()
+            //            };
+            //            post.Tags.Add(tag);
+            //        }
 
-            myDatabase.Blogs.AddRange(blogs);
+            //        blog.Posts.Add(post);
+            //    }
+            //}
 
-            myDatabase.SaveChanges();
+            //myDatabase.Beneficiario.AddRange(beneficiario);
+            //myDatabase.Item.AddRange(items);
+
+            //myDatabase.SaveChanges();
         }
     }
 }

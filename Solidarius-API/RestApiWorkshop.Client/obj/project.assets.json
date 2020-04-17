@@ -235,11 +235,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yugo.harago\\Documents\\School\\OneDrive_2020-04-16\\I Developer Workshop - RESTful APIs\\Solution\\RestApiWorkshop.Client\\RestApiWorkshop.Client.csproj",
-      "projectName": "RestApiWorkshop.Client",
-      "projectPath": "C:\\Users\\yugo.harago\\Documents\\School\\OneDrive_2020-04-16\\I Developer Workshop - RESTful APIs\\Solution\\RestApiWorkshop.Client\\RestApiWorkshop.Client.csproj",
+      "projectUniqueName": "C:\\Users\\yugo.harago\\Documents\\School\\ProjetoTccSolidarius\\Solidarius-API\\RestApiWorkshop.Client\\SolidariusAPI.Client.csproj",
+      "projectName": "SolidariusAPI.Client",
+      "projectPath": "C:\\Users\\yugo.harago\\Documents\\School\\ProjetoTccSolidarius\\Solidarius-API\\RestApiWorkshop.Client\\SolidariusAPI.Client.csproj",
       "packagesPath": "C:\\Users\\yugo.harago\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yugo.harago\\Documents\\School\\OneDrive_2020-04-16\\I Developer Workshop - RESTful APIs\\Solution\\RestApiWorkshop.Client\\obj\\",
+      "outputPath": "C:\\Users\\yugo.harago\\Documents\\School\\ProjetoTccSolidarius\\Solidarius-API\\RestApiWorkshop.Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\yugo.harago\\AppData\\Roaming\\NuGet\\NuGet.Config",

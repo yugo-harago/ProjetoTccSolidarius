@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SolidariusAPI.Api</name>
+    </assembly>
+    <members>
+        <member name="M:SolidariusAPI.Api.Controllers.BeneficiarioController.Get(System.String,System.Int32,System.Int32)">
+            <summary>
+            Busca um único beneficiario
+            </summary>
+            <remarks>
+                Formas de utilizar: Get /beneficiario?filter=Eu&amp;Skip=10&amp;top=20
+            </remarks>
+            <param name="filter">utilizado para filtar o nome do beneficiario</param>
+            <param name="top">É utilizado para buscar apenas um numero especifico de registros</param>
+            <param name="skip">É utilizado para pular registros</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

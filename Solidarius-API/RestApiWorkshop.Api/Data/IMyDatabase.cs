@@ -1,19 +1,21 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using RestApiWorkshop.Api.Models;
+using SolidariusAPI.Api.Models;
 
-namespace RestApiWorkshop.Api.Data
+namespace SolidariusAPI.Api.Data
 {
     public interface IMyDatabase
     {
-        DbSet<Blog> Blogs { get; }
-        DbSet<Author> Authors { get; }
-        DbSet<Post> Posts { get; }
-        DbSet<Tag> Tags { get; }
-
-        int SaveChanges();
-
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+        IQueryable<Beneficiario> Beneficiario { get; }
+        IQueryable<Pedido> Pedido { get; }
+        IQueryable<Doador> Doador { get; }
+        IQueryable<Mediador> Mediador { get; }
+        IQueryable<Item> Item{ get; }
+        public T Insert<T>(T entity);
+        public Task<T> InsertAsync<T>(T entity);
+        public T Update<T>(T entity);
+        public void Delete(object entity);
     }
 }

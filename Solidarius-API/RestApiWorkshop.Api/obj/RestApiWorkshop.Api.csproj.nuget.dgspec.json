@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yugo.harago\\Documents\\School\\OneDrive_2020-04-16\\I Developer Workshop - RESTful APIs\\Solution\\RestApiWorkshop.Api\\RestApiWorkshop.Api.csproj": {}
+    "C:\\Users\\yugo.harago\\Documents\\School\\RestAPI-Workshop-Material - Copia\\RestApiWorkshop.Api\\RestApiWorkshop.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yugo.harago\\Documents\\School\\OneDrive_2020-04-16\\I Developer Workshop - RESTful APIs\\Solution\\RestApiWorkshop.Api\\RestApiWorkshop.Api.csproj": {
+    "C:\\Users\\yugo.harago\\Documents\\School\\RestAPI-Workshop-Material - Copia\\RestApiWorkshop.Api\\RestApiWorkshop.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yugo.harago\\Documents\\School\\OneDrive_2020-04-16\\I Developer Workshop - RESTful APIs\\Solution\\RestApiWorkshop.Api\\RestApiWorkshop.Api.csproj",
+        "projectUniqueName": "C:\\Users\\yugo.harago\\Documents\\School\\RestAPI-Workshop-Material - Copia\\RestApiWorkshop.Api\\RestApiWorkshop.Api.csproj",
         "projectName": "RestApiWorkshop.Api",
-        "projectPath": "C:\\Users\\yugo.harago\\Documents\\School\\OneDrive_2020-04-16\\I Developer Workshop - RESTful APIs\\Solution\\RestApiWorkshop.Api\\RestApiWorkshop.Api.csproj",
+        "projectPath": "C:\\Users\\yugo.harago\\Documents\\School\\RestAPI-Workshop-Material - Copia\\RestApiWorkshop.Api\\RestApiWorkshop.Api.csproj",
         "packagesPath": "C:\\Users\\yugo.harago\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yugo.harago\\Documents\\School\\OneDrive_2020-04-16\\I Developer Workshop - RESTful APIs\\Solution\\RestApiWorkshop.Api\\obj\\",
+        "outputPath": "C:\\Users\\yugo.harago\\Documents\\School\\RestAPI-Workshop-Material - Copia\\RestApiWorkshop.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yugo.harago\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -51,10 +51,6 @@
               "version": "[8.6.1, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
-              "target": "Package",
-              "version": "[3.1.1, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.1, )"
             },

@@ -1,0 +1,15 @@
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\bin\Debug\netcoreapp3.1\SolidariusAPI.Client.exe
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\bin\Debug\netcoreapp3.1\SolidariusAPI.Client.deps.json
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\bin\Debug\netcoreapp3.1\SolidariusAPI.Client.runtimeconfig.json
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\bin\Debug\netcoreapp3.1\SolidariusAPI.Client.runtimeconfig.dev.json
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\bin\Debug\netcoreapp3.1\SolidariusAPI.Client.dll
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\bin\Debug\netcoreapp3.1\SolidariusAPI.Client.pdb
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\bin\Debug\netcoreapp3.1\Flurl.dll
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\bin\Debug\netcoreapp3.1\Flurl.Http.dll
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\obj\Debug\netcoreapp3.1\SolidariusAPI.Client.csprojAssemblyReference.cache
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\obj\Debug\netcoreapp3.1\SolidariusAPI.Client.AssemblyInfoInputs.cache
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\obj\Debug\netcoreapp3.1\SolidariusAPI.Client.AssemblyInfo.cs
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\obj\Debug\netcoreapp3.1\SolidariusAPI.Client.csproj.CopyComplete
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\obj\Debug\netcoreapp3.1\SolidariusAPI.Client.dll
+C:\Users\yugo.harago\Documents\School\ProjetoSolidariusTCC\ProjetoSolidarius.Api\RestApiWorkshop.Client\obj\Debug\netcoreapp3.1\SolidariusAPI.Client.pdb

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace RestApiWorkshop.Api
+namespace SolidariusAPI.Api
 {
     public class Program
     {
