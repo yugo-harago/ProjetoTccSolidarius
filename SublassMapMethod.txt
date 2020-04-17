@@ -1,0 +1,24 @@
+https://www.codeproject.com/Articles/232034/Inheritance-mapping-strategies-in-Fluent-Nhibernat
+
+Table Per Type
+	public ParentClass{
+		int Id;
+		string name;
+	}
+	public SubClass: ParentClass {
+		//Nota: Não tem "ID"
+		string AnotherValue;
+	}
+
+	ParentClassMap: ClassMap<ParentClass> {
+            Table("ParentClass");
+            Id(x => x.Id).Column("ParentClassId");
+            Map(x => x.Name).Column("Name");
+	}
+
+	SubClassMap: SubClassMap<SubClass>{
+            Table("SubClass");
+            KeyColumn("SubClassId");
+	    Map(x => x.AnotherValue).Column("AnotherValue");
+	}
+		
