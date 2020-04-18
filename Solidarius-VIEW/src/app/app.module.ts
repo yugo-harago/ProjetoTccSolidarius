@@ -9,6 +9,8 @@ import { GiverUserComponent } from './user/giver-user/giver-user.component';
 import { NewAccountComponent } from './account/new-account/new-account.component';
 import { UserAccountComponent } from './account/user-account/user-account.component';
 import { LoginComponent } from './account/login/login.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { LoginComponent } from './account/login/login.component';
     GiverUserComponent,
     NewAccountComponent,
     UserAccountComponent,
-    LoginComponent
+    LoginComponent,
+    LandingPageComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

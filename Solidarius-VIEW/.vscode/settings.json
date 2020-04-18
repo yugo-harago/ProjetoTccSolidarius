@@ -1,0 +1,8 @@
+{
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "typescript.tsc.autoDetect": "off",
+    "prettier.tabWidth": 4,
+    "prettier.useTabs": true
+}
