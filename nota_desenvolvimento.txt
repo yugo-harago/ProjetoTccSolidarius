@@ -1,0 +1,13 @@
+
+Utilização de Mysql
+	Confuzão de pacotes
+
+
+Mapeamento de subclasses
+	doc official:
+		https://github.com/FluentNHibernate/fluent-nhibernate/wiki/fluent-mapping
+	blog ajuda:
+		https://www.codeproject.com/Articles/232034/Inheritance-mapping-strategies-in-Fluent-Nhibernat
+	Tivemos um impecílio em encontrar uma documentação clara sobre como implementar um mapeamento
+	de subclaeese. Felizmente encontramos uma solução no site codeproject onde o author Igor Ignatov
+	descreve como implementar subclasses de diversos tipos
