@@ -15,5 +15,6 @@ namespace SolidariusAPI.Api.Models
         public string Comentario { get; set; }
         public DateTime DataModificacao { get; set; }
         public string Descricao { get; set; }
+        public IList<Item> Item { get; set; }
     }
 }

@@ -17,10 +17,10 @@ namespace SolidariusAPI.Api.Controllers
     [Route("items")]
     public class ItemController : ControllerBase
     {
-        private readonly IMyDatabase context;
+        private readonly IDatabase context;
         private readonly IMapper mapper;
 
-        public ItemController(IMyDatabase myDatabase, IMapper mapper)
+        public ItemController(IDatabase myDatabase, IMapper mapper)
         {
             this.context = myDatabase;
             this.mapper = mapper;

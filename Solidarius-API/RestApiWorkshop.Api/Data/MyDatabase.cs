@@ -9,7 +9,7 @@ using SolidariusAPI.Api.Models;
 
 namespace SolidariusAPI.Api.Data
 {
-    public class MyDatabase : IMyDatabase
+    public class MyDatabase : IDatabase
     {
         private readonly ISession db;
         public MyDatabase(ISession db)
@@ -25,6 +25,8 @@ namespace SolidariusAPI.Api.Data
 
         public IQueryable<Mediador> Mediador => db.Query<Mediador>();
         public IQueryable<Item> Item => db.Query<Item>();
+        public IQueryable<Usuario> Usuario => db.Query<Usuario>();
+        public ISQLQuery Query(string sql) => db.CreateSQLQuery(sql);
 
         public T Insert<T>(T entity)
         {

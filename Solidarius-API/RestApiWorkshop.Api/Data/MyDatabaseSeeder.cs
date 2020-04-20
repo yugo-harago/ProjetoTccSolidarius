@@ -5,7 +5,7 @@ namespace SolidariusAPI.Api.Data
 {
     public class MyDatabaseSeeder
     {
-        public static void Seed(IMyDatabase myDatabase)
+        public static void Seed(IDatabase myDatabase)
         {
             //var faker = new Faker();
 

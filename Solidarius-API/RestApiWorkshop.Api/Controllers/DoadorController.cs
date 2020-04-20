@@ -1,39 +1,58 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Mvc;
 using SolidariusAPI.Api.Data;
+using SolidariusAPI.Api.TransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace SolidariusAPI.Api.Controllers
 {
     [ApiController]
-    [Route("posts")]
+    [Route("doadores")]
     public class DoadorController : ControllerBase
     {
         // Note Old Posts
-        private readonly IMyDatabase myDatabase;
-        public DoadorController(IMyDatabase myDatabase)
+        private readonly IDatabase context;
+        private readonly IMapper mapper;
+        public DoadorController(IDatabase context, IMapper mapper)
         {
-            this.myDatabase = myDatabase;
+            this.context = context;
+            this.mapper = mapper;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        [ProducesResponseType(typeof(DoadorDto[]), (int)HttpStatusCode.OK)]
+        public IActionResult Get([FromQuery] string filter = null, int top = 100, int skip = 0)
         {
-            var posts = myDatabase.Doador
-                .ToList();
+            var doador = context.Doador
+                .Where(w => filter == null || w.Nome.Contains(filter))
+                .Skip(skip)
+                .Take(top)
+                .ProjectTo<DoadorDto>(mapper.ConfigurationProvider);
 
-            return Ok(posts);
+            return Ok(doador);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetId([FromRoute] int id)
+        [ProducesResponseType(typeof(DoadorDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public IActionResult GetId([FromRoute]int id)
         {
-            var post = myDatabase.Doador
+            var doador = context.Doador
                 .SingleOrDefault(s => s.Id == id);
 
-            return Ok(post);
+            if (doador == null)
+            {
+                return NotFound();
+            }
+
+            var dto = mapper.Map<DoadorDto>(doador);
+
+            return Ok(dto);
         }
     }
 }

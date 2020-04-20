@@ -36,6 +36,7 @@ namespace SolidariusAPI.Api
 
             // Mysql Connection Packages Mysql.Data; NHibernate
             var connStr = Configuration.GetConnectionString("DefaultConnection");
+            //MsSqliteConfiguration.Standard.UsingFile("")
             var _sessionFactory = Fluently.Configure()
                                       .Database(MySQLConfiguration.Standard.ConnectionString(connStr))
                                       .Mappings(m => m.FluentMappings.AddFromAssembly(GetType().Assembly))
@@ -44,6 +45,10 @@ namespace SolidariusAPI.Api
             {
                 return _sessionFactory.OpenSession();
             });
+
+            // Add Session
+            services.AddDistributedMemoryCache();
+            services.AddSession();
 
 
             services.AddAutoMapper(GetType().Assembly);
@@ -66,15 +71,11 @@ namespace SolidariusAPI.Api
             //    options.UseInMemoryDatabase("Workshop");
             //});
 
-            // REST
-            //services.AddMvc(options => options.EnableEndpointRouting = false)
-            //    .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
-
-            services.AddScoped<IMyDatabase, MyDatabase>();
+            services.AddScoped<IDatabase, MyDatabase>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMyDatabase myDatabase)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDatabase myDatabase)
         {
             if (env.IsDevelopment())
             {
@@ -82,6 +83,9 @@ namespace SolidariusAPI.Api
             }
 
             app.UseHttpsRedirection();
+
+            // Use session
+            app.UseSession();
 
             app.UseSwagger();
             app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API Documentation V1"));

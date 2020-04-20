@@ -16,10 +16,10 @@ namespace SolidariusAPI.Api.Controllers
     public class BeneficiarioController : ControllerBase
     {
         // Note Old Blogs
-        private readonly IMyDatabase context;
+        private readonly IDatabase context;
         private readonly IMapper mapper;
 
-        public BeneficiarioController(IMyDatabase context, IMapper mapper)
+        public BeneficiarioController(IDatabase context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
@@ -49,6 +49,8 @@ namespace SolidariusAPI.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(BeneficiarioDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public IActionResult GetId([FromRoute]int id)
         {
             var beneficiario = context.Beneficiario

@@ -22,8 +22,6 @@ namespace SolidariusAPI.Api.Data.Mappings
             Map(x => x.DataModificacao).Column("Data_Modificacao");
             Map(x => x.Email).Column("Email");
             Map(x => x.Documento).Column("Documento");
-
-            //DiscriminateSubClassesOnColumn("UsuarioId");
         }
     }
 }

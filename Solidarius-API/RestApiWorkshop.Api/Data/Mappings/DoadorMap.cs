@@ -7,17 +7,13 @@ using System.Threading.Tasks;
 
 namespace SolidariusAPI.Api.Data.Mappings
 {
-    public class BeneficiarioMap : SubclassMap<Beneficiario>
+    public class DoadorMap : SubclassMap<Doador>
     {
-        // Subclass method: 
-        // Table Per Type
-        public BeneficiarioMap()
+        public DoadorMap()
         {
-            Table("Beneficiario");
+            Table("Doador");
             KeyColumn("UsuarioId");
             Not.LazyLoad();
-            Map(x => x.Interno).Column("Interno");
-            Map(x => x.Ra).Column("RA");
         }
     }
 }

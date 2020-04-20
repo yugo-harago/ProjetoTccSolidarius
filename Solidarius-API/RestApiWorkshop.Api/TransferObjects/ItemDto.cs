@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SolidariusAPI.Api.TransferObjects
 {
-    public class ItemDto
+    public class ItemDto : IDto
     {
         public int Id { get; set; }
         public string Foto { get; set; }

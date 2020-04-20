@@ -15,6 +15,5 @@ namespace SolidariusAPI.Api.Models
         public virtual DateTime DataCriacao { get; set; }
         public virtual string Descricao { get; set; }
         public virtual Categoria Categoria { get; set; }
-        public virtual Pedido Pedido { get; set; }
     }
 }

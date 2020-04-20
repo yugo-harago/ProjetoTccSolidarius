@@ -5,7 +5,7 @@ namespace RestApiWorkshop.Client.Models
 {
     public class Usuario
     {
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public int Telefone { get; set; }
         public string Documento { get; set; }
         public string Email { get; set; }

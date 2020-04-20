@@ -1,41 +1,57 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SolidariusAPI.Api.Data;
+using SolidariusAPI.Api.TransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace SolidariusAPI.Api.Controllers
 {
     [ApiController]
-    [Route("authors")]
+    [Route("pedidos")]
     public class PedidoController : ControllerBase
     {
-        // Note: old Authors
-        private readonly IMyDatabase context;
+        private readonly IDatabase context;
+        private readonly IMapper mapper;
 
-        public PedidoController(IMyDatabase context)
+        public PedidoController(IDatabase context, IMapper mapper)
         {
             this.context = context;
+            this.mapper = mapper;
         }
-        
+
         [HttpGet]
-        public IActionResult Get()
+        [ProducesResponseType(typeof(PedidoDto[]), (int)HttpStatusCode.OK)]
+        public IActionResult Get([FromQuery] string filter = null, int top = 100, int skip = 0)
         {
             var pedido = context.Pedido
-                .ToList();
+                .Where(w => filter == null || w.Descricao.Contains(filter))
+                .Skip(skip)
+                .Take(top)
+                .ProjectTo<PedidoDto>(mapper.ConfigurationProvider);
 
             return Ok(pedido);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetId([FromRoute] int id)
+        public IActionResult GetId([FromRoute]int id)
         {
-            var author = context.Pedido
+            var pedido = context.Pedido
                 .SingleOrDefault(s => s.Id == id);
 
-            return Ok(author);
+            if (pedido == null)
+            {
+                return NotFound();
+            }
+
+            var dto = mapper.Map<PedidoDto>(pedido);
+
+            return Ok(dto);
         }
     }
 }

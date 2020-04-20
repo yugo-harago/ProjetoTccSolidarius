@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SolidariusAPI.Api.TransferObjects
 {
-    public class PedidoDto
+    public class PedidoDto : IDto
     {
         public int Id { get; set; }
 
@@ -16,6 +16,6 @@ namespace SolidariusAPI.Api.TransferObjects
         public string Comentario { get; set; }
         public DateTime DataModificacao { get; set; }
         public string Descricao { get; set; }
-        public List<Item> itens { get; set; } = new List<Item>();
+        public IList<Item> Item { get; set; } = new List<Item>();
     }
 }

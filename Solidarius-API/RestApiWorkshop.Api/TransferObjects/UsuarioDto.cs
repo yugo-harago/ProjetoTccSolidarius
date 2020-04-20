@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace SolidariusAPI.Api.TransferObjects
 {
-    public class UsuarioDto
+    public class UsuarioDto : IDto
     {
-        public int UsuarioId { get; set; }
+        public int Id { get; set; }
         public int Telefone { get; set; }
         public string Documento { get; set; }
         public string Email { get; set; }

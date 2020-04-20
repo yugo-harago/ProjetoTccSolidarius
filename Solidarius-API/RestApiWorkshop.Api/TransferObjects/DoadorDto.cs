@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace SolidariusAPI.Api.TransferObjects
 {
-    public class DoadorDto
+    public class DoadorDto : UsuarioDto
     {
-        public int Id { get; set; }
     }
 }

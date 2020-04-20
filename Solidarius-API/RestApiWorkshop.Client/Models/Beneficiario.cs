@@ -4,7 +4,6 @@ namespace RestApiWorkshop.Client.Models
 {
     public class Beneficiario : Usuario
     {
-        public int Id { get; set; }
 
         public bool Interno { get; set; }
 
