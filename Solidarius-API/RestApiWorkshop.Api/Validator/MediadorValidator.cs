@@ -11,7 +11,7 @@ namespace SolidariusAPI.Api.Validator
     {
         public MediadorValidator()
         {
-            RuleFor(r => r.ra).NotEmpty();
+            RuleFor(r => r.Ra).NotEmpty();
         }
     }
 }

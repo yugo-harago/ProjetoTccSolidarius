@@ -12,6 +12,11 @@ using System.Threading.Tasks;
 
 namespace SolidariusAPI.Api.Controllers
 {
+    public class UserCredential
+    {
+        public string email { get; set; }
+        public string pass { get; set; }
+    }
     [ApiController]
     [Route("user")]
     public class UserController : ControllerBase
@@ -25,44 +30,50 @@ namespace SolidariusAPI.Api.Controllers
         }
 
         [HttpGet("user-page")]
-        public IActionResult CheckSession()
+        public IActionResult CheckSession(int userId, int userTypeInt)
         {
-            var sessionOn = HttpContext.Session.GetInt32("UserId") != null &&
-                            HttpContext.Session.GetInt32("UserId") != 0 &&
-                            HttpContext.Session.GetInt32("UserType") != null &&
-                            HttpContext.Session.GetInt32("UserType") != 0;
-            if (!sessionOn)
-            {
-                return NoContent();
-            }
+            var userType = (UserType)userTypeInt;
+            //var userId_test = HttpContext.Session.GetInt32("UserId");
+            //var userType_test = HttpContext.Session.GetInt32("UserType");
+            //var sessionOn = userId_test != null &&
+            //                userId_test != 0 &&
+            //                userType_test != null &&
+            //                userType_test != 0;
+            //if (!sessionOn)
+            //{
+            //    return NoContent();
+            //}
 
-            var userId = HttpContext.Session.GetInt32("UserId").Value;
-            var userType = (UserType)HttpContext.Session.GetInt32("UserType").Value;
+            //var userId = HttpContext.Session.GetInt32("UserId").Value;
+            //var userType = (UserType)HttpContext.Session.GetInt32("UserType").Value;
 
             IModel user = null;
-            IDto dto = null;
             switch (userType)
             {
                 case UserType.Beneficiario:
                     user = context.Beneficiario.Find(userId);
-                    dto = mapper.Map<BeneficiarioDto>(user);
-                    break;
+                    var beneficiarioDto = mapper.Map<BeneficiarioDto>(user);
+                    return Ok(new { obj = beneficiarioDto, userType = userType });
+                    // break;
                 case UserType.Doador:
                     user = context.Doador.Find(userId);
-                    dto = mapper.Map<DoadorDto>(user);
-                    break;
+                    var doadorDto = mapper.Map<DoadorDto>(user);
+                    return Ok(new { obj = doadorDto, userType = userType });
+                    // break;
                 case UserType.Mediador:
                     user = context.Mediador.Find(userId);
-                    dto = mapper.Map<MediadorDto>(user);
-                    break;
+                    var mediadorDto = mapper.Map<MediadorDto>(user);
+                    return Ok(new { obj = mediadorDto, userType = userType });
+                    // break;
             }
-
-            return Ok(new { obj = dto, userType = userType });
+            return NotFound();
         }
 
-        [HttpGet("login")]
-        public IActionResult Login(string email, string pass)
+        [HttpPost("login")]
+        public IActionResult Login([FromBody]UserCredential user)
         {
+            var email = user.email;
+            var pass = user.pass;
             var userId = context.Usuario
                             .Where(w => w.Email == email)
                             .Where(w => w.Senha == pass)
@@ -73,23 +84,25 @@ namespace SolidariusAPI.Api.Controllers
                 return NoContent();
             }
             HttpContext.Session.SetInt32("UserId", userId);
+            int? userType = null;
 
             var beneficiario = context.Beneficiario.Where(w => w.Id == userId);
             if (beneficiario.Any())
             {
-                HttpContext.Session.SetInt32("UserType", (int)UserType.Beneficiario);
+                userType = (int)UserType.Beneficiario;
             }
             var doador = context.Doador.Where(w => w.Id == userId);
             if (doador.Any())
             {
-                HttpContext.Session.SetInt32("UserType", (int)UserType.Doador);
+                userType = (int)UserType.Doador;
             }
             var mediador = context.Mediador.Where(w => w.Id == userId);
             if (mediador.Any())
             {
-                HttpContext.Session.SetInt32("UserType", (int)UserType.Mediador);
+                userType = (int)UserType.Mediador;
             }
-            return Ok();
+            HttpContext.Session.SetInt32("UserType", userType.Value);
+            return Ok(new { userId, userType });
 
             //var query = context.Query(
             //    @"

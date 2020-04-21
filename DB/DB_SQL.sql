@@ -76,3 +76,9 @@ FOREIGN KEY(PedidoId) REFERENCES Pedido (PedidoId)
 -- FOREIGN KEY(PedidoId) REFERENCES Pedido (PedidoId),
 -- FOREIGN KEY(ItemId) REFERENCES Item (ItemId);
 -- );
+CREATE TABLE Sessions (
+SessionId int(11) PRIMARY KEY AUTO_INCREMENT,
+UserId int(11),
+UserType int(11)
+);
+

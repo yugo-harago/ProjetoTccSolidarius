@@ -18,7 +18,7 @@ Table Per Type
 
 	SubClassMap: SubClassMap<SubClass>{
             Table("SubClass");
-            KeyColumn("SubClassId");
+            KeyColumn("ParentClassId");
 	    Map(x => x.AnotherValue).Column("AnotherValue");
 	}
 		

@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentUserComponent } from './user/student-user/student-user.component';
@@ -11,6 +13,7 @@ import { UserAccountComponent } from './account/user-account/user-account.compon
 import { LoginComponent } from './account/login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserComponent } from './user/user.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { UserComponent } from './user/user.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,9 @@
-<p>
-  user works!
-</p>
+<div *ngIf="!userType">
+    <p>
+    Carregando usuário...
+    </p>
+</div>
+
+<app-giver-user *ngIf="doador"></app-giver-user>
+<app-mediator *ngIf="mediador"></app-mediator>
+<app-student-user *ngIf="beneficiario"></app-student-user>

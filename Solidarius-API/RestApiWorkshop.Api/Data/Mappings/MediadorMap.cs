@@ -12,7 +12,7 @@ namespace SolidariusAPI.Api.Data.Mappings
         public MediadorMap()
         {
             Table("Mediador");
-            KeyColumn("MediadorId");
+            KeyColumn("UsuarioId");
             Not.LazyLoad();
             Map(x => x.Ra).Column("RA");
         }

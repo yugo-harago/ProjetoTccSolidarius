@@ -514,8 +514,6 @@ C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestAp
 C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.csprojAssemblyReference.cache
 C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\staticwebassets\SolidariusAPI.Api.StaticWebAssets.Manifest.cache
 C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\staticwebassets\SolidariusAPI.Api.StaticWebAssets.xml
-C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.AssemblyInfoInputs.cache
 C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.AssemblyInfo.cs
 C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.RazorTargetAssemblyInfo.cache
@@ -523,3 +521,9 @@ C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestAp
 C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.dll
 C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.xml
 C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.pdb
+C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\bin\Debug\netcoreapp3.1\Pomelo.Extensions.Caching.MySql.dll
+C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\yugo.harago\Documents\School\ProjetoTccSolidarius\Solidarius-API\RestApiWorkshop.Api\obj\Debug\netcoreapp3.1\SolidariusAPI.Api.MvcApplicationPartsAssemblyInfo.cache

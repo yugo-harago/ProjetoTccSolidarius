@@ -1,8 +1,16 @@
 {
-    "editor.tabSize": 4,
-    "editor.insertSpaces": true,
     "editor.detectIndentation": false,
-    "typescript.tsc.autoDetect": "off",
-    "prettier.tabWidth": 4,
-    "prettier.useTabs": true
+    "sqltools.connections": [
+        {
+            "database": "TCCSolidario",
+            "dialect": "MySQL",
+            "isActive": false,
+            "isConnected": false,
+            "name": "MySQL80",
+            "password": "1682",
+            "port": 3306,
+            "server": "127.0.0.1",
+            "username": "root"
+        }
+    ]
 }

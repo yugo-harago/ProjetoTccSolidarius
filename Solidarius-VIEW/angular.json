@@ -28,10 +28,12 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/bootstrap/css/bootstrap.min.css"
+              "src/assets/bootstrap/css/bootstrap.min.css",
+              "node_modules/@syncfusion/ej2-notifications/styles/material.css"
             ],
             "scripts": [
-              "src/assets/bootstrap/js/bootstrap.min.js"
+                "src/assets/js/jquery.min.js",
+                "src/assets/bootstrap/js/bootstrap.min.js"
             ],
             "es5BrowserSupport": true
           },
