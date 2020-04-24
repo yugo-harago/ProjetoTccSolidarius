@@ -67,7 +67,7 @@ namespace SolidariusAPI.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddBlog([FromBody] Beneficiario beneficiario)
+        public async Task<IActionResult> AddBeneficiario([FromBody] Beneficiario beneficiario)
         {
             var newBeneficiario = mapper.Map<Beneficiario>(beneficiario);
             newBeneficiario = await context.InsertAsync(newBeneficiario);

@@ -26,6 +26,7 @@ namespace SolidariusAPI.Api.Data
         public IQueryable<Mediador> Mediador => db.Query<Mediador>();
         public IQueryable<Item> Item => db.Query<Item>();
         public IQueryable<Usuario> Usuario => db.Query<Usuario>();
+        public IQueryable<Notificacao> Notificacao => db.Query<Notificacao>();
         public ISQLQuery Query(string sql) => db.CreateSQLQuery(sql);
 
         public T Insert<T>(T entity)

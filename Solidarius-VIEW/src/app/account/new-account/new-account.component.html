@@ -4,14 +4,14 @@
     <div class="container-fluid" style="width: 100%;height: 100%;">
         <div class="row register-form">
             <div class="col-md-8 offset-md-2">
-                <form class="custom-form" style="background-color: #f0f0f0;">
+                <form class="custom-form" style="background-color: #f0f0f0;" (ngSubmit)="onSubmit()">
                     <h1>Cadastre-se</h1>
                     <div class="form-row form-group">
                         <div class="col-sm-4 label-column">
                             <label class="col-form-label" for="name-input-field">Nome</label>
                         </div>
                         <div class="col-sm-6 input-column">
-                            <input class="form-control" type="text"/>
+                            <input class="form-control" type="text" name="nome" [(ngModel)]="usuario.nome"/>
                         </div>
                     </div>
                     <div class="form-row form-group">
@@ -19,7 +19,7 @@
                             <label class="col-form-label" for="email-input-field">E-mail</label>
                         </div>
                         <div class="col-sm-6 input-column">
-                            <input class="form-control" type="email"/>
+                            <input class="form-control" type="email" name="email" [(ngModel)]="usuario.email"/>
                         </div>
                     </div>
                     <div class="form-row form-group">
@@ -27,7 +27,7 @@
                             <label class="col-form-label" for="pawssword-input-field">Senha</label>
                         </div>
                         <div class="col-sm-6 input-column">
-                            <input class="form-control" type="password"/>
+                            <input class="form-control" type="password" name="password" [(ngModel)]="usuario.senha"/>
                         </div>
                     </div>
                     <div class="form-row form-group">
@@ -35,7 +35,23 @@
                             <label class="col-form-label" for="repeat-pawssword-input-field">Repetir Senha</label>
                         </div>
                         <div class="col-sm-6 input-column">
-                            <input class="form-control" type="password"/>
+                            <input class="form-control" type="password" name="repead-password"/>
+                        </div>
+                    </div>
+                    <div class="form-row form-group">
+                        <div class="col-sm-4 label-column">
+                            <label class="col-form-label" for="name-input-field">Telefone</label>
+                        </div>
+                        <div class="col-sm-6 input-column">
+                            <input class="form-control" type="number" name="tel" [(ngModel)]="usuario.telefone"/>
+                        </div>
+                    </div>
+                    <div class="form-row form-group">
+                        <div class="col-sm-4 label-column">
+                            <label class="col-form-label" for="name-input-field">Documento de Identificação</label>
+                        </div>
+                        <div class="col-sm-6 input-column">
+                            <input class="form-control" type="text" name="documento" [(ngModel)]="usuario.documento"/>
                         </div>
                     </div>
                     <div class="form-row form-group">
@@ -44,25 +60,31 @@
                         </div>
                         <div class="col-sm-4 input-column">
                             <div class="dropdown">
-                                <button
-                                    class="btn btn-light dropdown-toggle"
-                                    data-toggle="dropdown"
-                                    aria-expanded="false"
-                                    type="button">Dropdown
-                                </button>
-                                <div class="dropdown-menu" role="menu">
-                                    <a class="dropdown-item" role="presentation" href="#">First Item</a>
-                                    <a class="dropdown-item" role="presentation" href="#">Second Item</a>
-                                    <a class="dropdown-item" role="presentation" href="#">Third Item</a>
-                                </div>
+                                <select class="btn btn-light dropdown-toggle" role="menu" (change)="userType = $event.target.value">
+                                    <option selected *ngIf="!userType">Escolha uma opção</option>
+                                    <option class="dropdown-item" role="presentation" [value]="userTypeEnum.beneficiario">Estudante</option>
+                                    <option class="dropdown-item" role="presentation" [value]="userTypeEnum.doador">Doador</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <div class="form-check">
+                    <div class="form-row form-group" *ngIf="userType == userTypeEnum.beneficiario">
+                        <div class="col-sm-4 label-column">
+                            <label class="col-form-label" for="name-input-field">RA</label>
+                        </div>
+                        <div class="col-sm-6 input-column">
+                            <input class="form-control" type="number" name="ra" [(ngModel)]="beneficiario.ra"/>
+                        </div>
+                    </div>
+                    <div class="form-check" *ngIf="userType == userTypeEnum.beneficiario">
+                        <input class="form-check-input" type="checkbox" id="formCheck-2" [(ngModel)]="beneficiario.interno" name="interno"/>
+                        <label class="form-check-label" for="formCheck-2">Eu sou interno.</label>
+                    </div>
+                    <!-- <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="formCheck-2"/>
                         <label class="form-check-label" for="formCheck-2">Eu li e estou de acordo com os termos de condilções.</label>
-                    </div>
-                    <button class="btn btn-light submit-button bg-primary" type="button">Cadastrar!</button>
+                    </div> -->
+                    <button class="btn btn-light submit-button bg-primary" type="submit">Cadastrar!</button>
                 </form>
             </div>
         </div>

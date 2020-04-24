@@ -8,7 +8,7 @@ namespace SolidariusAPI.Api.Data
 {
     public static class DataExtensionMethods
     {
-        public static IModel Find(this IQueryable<IModel> query, int id)
+        public static T Find<T>(this IQueryable<T> query, int id) where T:IModel
         {
             return query.Where(w => w.Id == id).FirstOrDefault();
         }

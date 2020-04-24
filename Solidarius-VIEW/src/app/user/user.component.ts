@@ -38,10 +38,10 @@ export class UserComponent implements OnInit {
                     this.beneficiario = e.body.obj;
                 }
                 if (this.userType === UserType.doador) {
-                    this.doador = e.obj;
+                    this.doador = e.body.obj;
                 }
                 if (this.userType === UserType.mediador) {
-                    this.mediador = e.obj;
+                    this.mediador = e.body.obj;
                 }
             }
         )

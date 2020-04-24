@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MediadorModel } from '../../models/mediador-model';
 
 @Component({
   selector: 'app-mediator',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MediatorComponent implements OnInit {
 
-  constructor() { }
+    @Input() mediador: MediadorModel;
+    constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

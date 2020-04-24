@@ -1,3 +1,98 @@
-<p>
-  giver-user works!
-</p>
+<app-giver-user-header></app-giver-user-header>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col mb-2">
+                            <h4>Pesquisar</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <form id="search-form">
+                                <div class="input-group" id="searcher">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Título <!--<i class="fa fa-caret-down ml-1"></i>-->
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" [(ngModel)]="word" name="word" style="height: 37px;">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button" (click)="pesquisar()">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngFor="let pedido of pedidos">
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="card-body pt-2">
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="row" *ngIf="pedido.estado === estado.aguardando">
+                                    <div class="col">
+                                        <p class="text-right text-success d-xl-flex justify-content-xl-end mb-0">
+                                            <i class="fa fa-circle justify-content-xl-end mr-2 pt-1"></i>
+                                            <span class="justify-content-xl-end">Ativo</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="pedido.estado !== estado.aguardando">
+                                    <div class="col">
+                                        <p class="text-right text-muted d-xl-flex justify-content-xl-end mb-0">
+                                            <i class="fa fa-circle justify-content-xl-end mr-2 pt-1"></i>
+                                            <span class="justify-content-xl-end">Ativo</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <h4 class="mb-0">{{ pedido.titulo }}</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="d-xl-flex justify-content-xl-end mb-0">
+                                            <span class="text-secondary justify-content-xl-end">Categoria :</span>
+                                            <ng-template ngFor let-item [ngForOf]="pedido.item" let-i="index">
+                                                <span class="text-secondary ml-2">{{ categoria[item.categoria] }}</span>
+                                            </ng-template>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <p class="text-center">{{ pedido.descricao }}</p>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="pedido.estado === estado.aguardando">
+                            <div class="col text-right">
+                                <button class="btn btn-primary" id="send-money-btn" type="button" (click)="doar(pedido.id)">
+                                    <i class="fa fa-heart"></i>
+                                    <span class="text-light ml-1" id="pedido-money">Doar</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="pedido.estado !== estado.aguardando">
+                            <div class="col text-right">
+                                <button class="btn btn-light" id="send-money-btn" type="button">
+                                    <i class="fa fa-check"></i>
+                                    <span class="text-info ml-1" id="pedido-money">Doado!</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

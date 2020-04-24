@@ -1,3 +1,155 @@
-<p>
-  student-user works!
-</p>
+<app-student-user-header></app-student-user-header>
+<div class="mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 d-none d-md-block" id="perfil-card-col">
+                <div class="card border rounded shadow-sm">
+                    <div class="row">
+                        <div class="col text-center p-3">
+                            <img
+                                class="rounded-circle border border-primary shadow-sm"
+                                [src]="'../assets/img/' + beneficiario.fotoUsuario"
+                                width="120px"
+                                height="120px"></div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="text-center card-title">{{ beneficiario?.nome }}</h4>
+                            <div class="row">
+                                <div class="col">
+                                    <span>Pedidos :</span>
+                                    <span id="petition-count" class="ml-2">{{ pedidos?.length }}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span>Recebidos :</span>
+                                    <span id="recieved-count" class="ml-2">{{ recebidos }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <form (ngSubmit)="novoPedido()">
+                                        <div class="form-row mb-3">
+                                            <div class="col">
+                                                <input class="form-control" type="text" placeholder="Título" name="titulo" [(ngModel)]="newPedido.titulo"></div>
+                                            </div>
+                                            <div class="form-row mb-3">
+                                                <div class="col">
+                                                    <textarea
+                                                        class="border rounded form-control form-control-lg d-flex d-lg-flex justify-content-lg-center"
+                                                        autocomplete="off"
+                                                        spellcheck="true"
+                                                        required=""
+                                                        minlength="10"
+                                                        maxlength="10000"
+                                                        placeholder="Qual a sua dificuldade?"
+                                                        style="height: 100px;"
+                                                        name="descricao"
+                                                        [(ngModel)]="newPedido.descricao"></textarea>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="mb-3 ml-3" *ngFor="let item of newPedido.item">
+                                                <div class="form-row mb-3">
+                                                    <div class="col">
+                                                        <input class="form-control" type="text" placeholder="Descrição do item" name="item" [(ngModel)]="item.descricao">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row mb-3">
+                                                    <div class="col">
+                                                        <select class="form-control form-control-lg btn-sm" (change)="changeCategoria($event.target.value, item)">
+                                                            <option selected>Categoria</option>
+                                                            <option [value]="categoriaEnum.comida">Comida</option>
+                                                            <option [value]="categoriaEnum.higiene">Higiene</option>
+                                                            <option [value]="categoriaEnum.roupa">Roupa</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row mb-3">
+                                                    <div class="col text-right">
+                                                        <button class="btn btn-primary" type="button" (click)="novoItem()"><i class="fas fa-plus"></i> Novo item</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-row text-center d-flex align-items-lg-center">
+                                                        <div class="col">
+                                                            <i class="fa fa-image post-icons"></i>
+                                                        </div>
+                                                        <div class="col">
+                                                            <i class="fa fa-smile-o post-icons"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <button class="btn btn-primary" type="submit">Postar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card mb-3" *ngFor="let pedido of pedidos">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <h4>{{ pedido.titulo }}</h4>
+                                            </div>
+                                            <div class="col text-right" id="petition-notification" *ngIf="pedido.estado === estado.aguardando">
+                                                <p class="text-success d-xl-flex justify-content-xl-end">
+                                                    <i class="fa fa-circle justify-content-xl-end mr-2 pt-1"></i>
+                                                    <span class="justify-content-xl-end">Ativo</span>
+                                                </p>
+                                            </div>
+                                            <div class="col text-right" id="petition-notification" *ngIf="pedido.estado !== estado.aguardando">
+                                                <p class="text-muted d-xl-flex justify-content-xl-end">
+                                                    <i class="fa fa-circle justify-content-xl-end mr-2 pt-1"></i>
+                                                    <span class="justify-content-xl-end">Ativo</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="d-xl-flex justify-content-xl-end mb-0">
+                                                    <span class="text-secondary justify-content-xl-end">Categoria :</span>
+                                                    <ng-template ngFor let-item [ngForOf]="pedido.item" let-i="index">
+                                                        <span class="text-secondary ml-2">{{ categoriaEnum[item.categoria] }}</span>
+                                                    </ng-template>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>{{ pedido.descricao }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row" *ngIf="pedido.estado === estado.aguardando">
+                                            <div class="col text-right">
+                                                <span class="text-primary" id="petition-money">Ativo Em Espera</span>
+                                            </div>
+                                        </div>
+                                        <div class="row" *ngIf="pedido.estado === estado.emAndamento">
+                                            <div class="col text-right">
+                                                <span class="text-info" id="petition-money">Em Processo</span>
+                                            </div>
+                                        </div>
+                                        <div class="row" *ngIf="pedido.estado === estado.concluido">
+                                            <div class="col text-right">
+                                                <span class="text-secondary" id="petition-money">Recebido!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

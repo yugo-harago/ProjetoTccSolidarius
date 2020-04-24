@@ -14,8 +14,8 @@ export class ApiService {
         private notification: NotificationService
     ) {}
     private serverUrl = 'http://localhost:53905/';
-    public get<T>(url: string): Observable<any> {
-        return this.httpClient.get(this.serverUrl + url, {observe : 'response'})
+    public get<T>(url: string, options?: any): Observable<any> {
+        return this.httpClient.get(this.serverUrl + url, options)
                 .pipe(tap(() => {}, this.errorLog));
     }
     public post<T>(url: string, body: any): Observable<any> {

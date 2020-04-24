@@ -10,7 +10,7 @@ USE TCCSolidario;
 CREATE TABLE Pedido (
 PedidoId int(11) PRIMARY KEY AUTO_INCREMENT,
 Quantidade int(11),
-Estado varchar(50),
+Estado int(11),
 Data_Criacao datetime,
 Comentario varchar(250),
 Data_Modificacao datetime,

@@ -40,10 +40,10 @@ namespace SolidariusAPI.Api
             services.AddDistributedMemoryCache();
             services.AddSession();
             // Mysql Connection Packages Mysql.Data; NHibernate
-            var connStr = Configuration.GetConnectionString("DefaultConnection");
-            //MsSqliteConfiguration.Standard.UsingFile("")
+            //var database = MySQLConfiguration.Standard.ConnectionString(Configuration.GetConnectionString("DefaultConnection"));
+            var database = MsSqliteConfiguration.Standard.UsingFile("../../DB/database.db");
             var _sessionFactory = Fluently.Configure()
-                                      .Database(MySQLConfiguration.Standard.ConnectionString(connStr))
+                                      .Database(database)
                                       .Mappings(m => m.FluentMappings.AddFromAssembly(GetType().Assembly))
                                       .BuildConfiguration();
             _sessionFactory.SetProperty(NHibernate.Cfg.Environment.ConnectionProvider, typeof(NHibernate.Connection.DriverConnectionProvider).AssemblyQualifiedName)

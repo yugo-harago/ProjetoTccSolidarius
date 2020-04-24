@@ -27,13 +27,14 @@ export class LoginComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.sessionStorage.popStoredNotification('/login');
     }
 
     public login() {
         this.userService.login(this.user.email, this.user.pass).subscribe(
             (e: any) => {
                 if (e.status === 204) {
-                    this.notificationService.popNotification("Usuário não encontrado");
+                    this.notificationService.popNotification('Usuário não encontrado');
                 }
                 if (e.status === 200) {
                     this.sessionStorage.addUser(e.body);

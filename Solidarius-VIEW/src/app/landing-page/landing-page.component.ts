@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from '../session-storage.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+        private session: SessionStorageService
+    ) { }
 
     ngOnInit() {
+        this.session.removeUser();
     }
 
 }

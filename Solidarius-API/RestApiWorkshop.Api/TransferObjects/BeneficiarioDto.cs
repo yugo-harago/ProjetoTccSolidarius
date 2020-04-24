@@ -10,6 +10,6 @@ namespace SolidariusAPI.Api.TransferObjects
 
         public bool Interno { get; set; }
 
-        public string Ra { get; set; }
+        public int Ra { get; set; }
     }
 }

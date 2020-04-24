@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using SolidariusAPI.Api.Data;
+using SolidariusAPI.Api.Models;
 using SolidariusAPI.Api.TransferObjects;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,18 @@ namespace SolidariusAPI.Api.Controllers
             var dto = mapper.Map<DoadorDto>(doador);
 
             return Ok(dto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddDoador([FromBody] Doador doador)
+        {
+            var newDoador = mapper.Map<Doador>(doador);
+            newDoador.DataCriacao = DateTime.Now;
+            newDoador.DataModificacao = DateTime.Now;
+            newDoador = await context.InsertAsync(newDoador);
+
+            // 201 retorna em "location" o diretório do método de onde faz o get
+            return CreatedAtAction(nameof(GetId), new { Id = newDoador.Id }, mapper.Map<DoadorDto>(newDoador));
         }
     }
 }

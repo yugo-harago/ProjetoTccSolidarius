@@ -7,6 +7,6 @@ namespace SolidariusAPI.Api.Models
     {
         // public virtual int Id { get; set; }
         public virtual bool Interno { get; set; }
-        public virtual string Ra { get; set; }
+        public virtual int Ra { get; set; }
     }
 }

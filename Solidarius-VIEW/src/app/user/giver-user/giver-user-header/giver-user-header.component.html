@@ -1,0 +1,44 @@
+<nav class="navbar navbar-light navbar-expand-md bg-secondary" id="nav-bar-1">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#">Solidarius</a>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-2">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item" role="presentation"></li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item" role="presentation"></li>
+                <li class="nav-item ml-2" role="presentation">
+                    <button
+                        class="btn btn-primary d-xl-flex align-items-xl-center"
+                        id="enter-btn"
+                        type="button">
+                        <i class="fas fa-heart header-icons"></i>
+                    </button>
+                </li>
+                <li class="nav-item ml-2" role="presentation">
+                    <div class="btn-group">
+                        <button
+                            class="btn btn-primary d-xl-flex align-items-xl-center dropdown-toggle" 
+                            data-toggle="dropdown" 
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            id="enter-btn"
+                            type="button">
+                            <i class="fa fa-user-circle header-icons"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" routerLink="/user-account" *ngIf="router.url !== '/user-account'">Meus dados</a>
+                          <a class="dropdown-item" routerLink="/user" *ngIf="router.url !== '/user'">Página principal</a>
+                          <a class="dropdown-item" routerLink="/">Sair</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div style="width: 100px;"></div>
+    </div>
+</nav>

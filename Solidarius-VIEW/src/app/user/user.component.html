@@ -4,6 +4,6 @@
     </p>
 </div>
 
-<app-giver-user *ngIf="doador"></app-giver-user>
-<app-mediator *ngIf="mediador"></app-mediator>
-<app-student-user *ngIf="beneficiario"></app-student-user>
+<app-giver-user *ngIf="doador" [doador]="doador"></app-giver-user>
+<app-mediator *ngIf="mediador" [mediador]="mediador"></app-mediator>
+<app-student-user *ngIf="beneficiario" [beneficiario]="beneficiario"></app-student-user>

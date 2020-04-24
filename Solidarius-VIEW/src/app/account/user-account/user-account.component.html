@@ -1,3 +1,43 @@
-<p>
-  user-account works!
-</p>
+
+<app-student-user-header *ngIf="userType == userTypeEnum.beneficiario"></app-student-user-header>
+<app-giver-user-header *ngIf="userType == userTypeEnum.doador"></app-giver-user-header>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col text-center p-4">
+                    <img class="rounded-circle" [src]="'../../../assets/img/' + usuario.fotoUsuario" width="120" height="120"></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>Nome</td>
+                                    <td>{{ usuario.nome }}</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail</td>
+                                    <td>{{ usuario.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Telefone</td>
+                                    <td>{{ usuario.telefone }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Documento</td>
+                                    <td>{{ usuario.documento }}</td>
+                                </tr>
+                                <tr *ngIf="beneficiario?.ra">
+                                    <td>RA</td>
+                                    <td>{{ beneficiario.ra }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
