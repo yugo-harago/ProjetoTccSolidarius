@@ -7,6 +7,7 @@ import { SessionStorageService } from '../session-storage.service';
 import { DoadorModel } from '../models/doador-model';
 import { BeneficiarioModel } from '../models/beneficiario-model';
 import { UserType } from '../enums/userType.enum';
+import { MediadorModel } from '../models/mediador-model';
 
 @Injectable({
   providedIn: 'root'
@@ -41,12 +42,14 @@ export class UserService {
         }
     }
 
-    public getUser(): Observable<BeneficiarioModel | DoadorModel> {
+    public getUser(): Observable<BeneficiarioModel | DoadorModel | MediadorModel> {
         const user = this.sessionStorage.getUser();
         if (user.userType == UserType.beneficiario) {
             return this.apiService.get('beneficiarios/' + user.userId);
         } else if (user.userType == UserType.doador) {
             return this.apiService.get('doadores/' + user.userId);
+        } else if (user.userType == UserType.mediador) {
+            return this.apiService.get('mediadores/' + user.userId);
         }
     }
 }
