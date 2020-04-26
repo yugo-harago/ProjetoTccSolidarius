@@ -52,4 +52,13 @@ export class UserService {
             return this.apiService.get('mediadores/' + user.userId);
         }
     }
+
+    public sendImage(formData: any): Observable<any> {
+        return this.apiService.post(this.url + '/images', formData);
+        
+        // , {
+        //     reportProgress: true,
+        //     observe: 'events'
+        //   });
+    }
 }

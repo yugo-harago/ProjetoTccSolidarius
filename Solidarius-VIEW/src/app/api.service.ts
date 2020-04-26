@@ -18,8 +18,11 @@ export class ApiService {
         return this.httpClient.get(this.serverUrl + url, options)
                 .pipe(tap(() => {}, this.errorLog));
     }
-    public post<T>(url: string, body: any): Observable<any> {
-        return this.httpClient.post(this.serverUrl + url, body, {observe : 'response'})
+    public post<T>(url: string, body: any, options?: any): Observable<any> {
+        if (!options) {
+            options = {observe : 'response'};
+        }
+        return this.httpClient.post(this.serverUrl + url, body, options)
                 .pipe(tap(() => {}, this.errorLog));
     }
     public put<T>(url: string, body: any): Observable<any> {

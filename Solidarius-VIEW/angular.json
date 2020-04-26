@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "src/assets/bootstrap/css/bootstrap.min.css",
               "src/assets/fonts/fontawesome-all.min.css",
@@ -34,8 +35,8 @@
               "node_modules/@syncfusion/ej2-notifications/styles/material.css"
             ],
             "scripts": [
-                "src/assets/js/jquery.min.js",
-                "src/assets/bootstrap/js/bootstrap.min.js"
+              "src/assets/js/jquery.min.js",
+              "src/assets/bootstrap/js/bootstrap.min.js"
             ],
             "es5BrowserSupport": true
           },
@@ -91,6 +92,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": [],

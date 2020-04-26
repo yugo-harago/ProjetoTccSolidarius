@@ -76,10 +76,36 @@
                             <input class="form-control" type="number" name="ra" [(ngModel)]="beneficiario.ra"/>
                         </div>
                     </div>
-                    <div class="form-check" *ngIf="userType == userTypeEnum.beneficiario">
+                    <div class="form-check mb-3" *ngIf="userType == userTypeEnum.beneficiario">
                         <input class="form-check-input" type="checkbox" id="formCheck-2" [(ngModel)]="beneficiario.interno" name="interno"/>
                         <label class="form-check-label" for="formCheck-2">Eu sou interno.</label>
                     </div>
+                    <!-- Image -->
+                    <div class="form-row" style="width: 30%;margin: auto;">  
+                        <mat-card class="col">
+                                <!-- <mat-card-content>  
+                                    <ul>  
+                                        <li *ngFor="let file of files">  
+                                            <mat-progress-bar [value]="file.progress"></mat-progress-bar>  
+                                            <span id="file-label">  
+                                                Envie o seu perfil
+                                            </span>  
+                                        </li>  
+                                    </ul>  
+                                </mat-card-content>   -->
+                            <mat-card-actions *ngIf="!imageOk">  
+                                <button mat-button color="warn" type="button" (click)="fileUploadClick()">  
+                                    <mat-icon>file_upload</mat-icon>  
+                                    Upload  
+                                </button>  
+                            </mat-card-actions>  
+                            <mat-card-actions *ngIf="imageOk">  
+                                Imagem salva
+                            </mat-card-actions>  
+                        </mat-card>
+                        <input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*" style="display:none;" />
+                    </div>
+                    <!-- End Image-->
                     <!-- <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="formCheck-2"/>
                         <label class="form-check-label" for="formCheck-2">Eu li e estou de acordo com os termos de condilções.</label>

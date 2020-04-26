@@ -18,6 +18,13 @@ import { StudentUserHeaderComponent } from './user/student-user/student-user-hea
 import { GiverUserHeaderComponent } from './user/giver-user/giver-user-header/giver-user-header.component';
 import { MediatorHeaderComponent } from './user/mediator/mediator-header/mediator-header.component';
 import { ModalComponent } from './modal/modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatToolbarModule,  
+    MatIconModule,  
+    MatCardModule,  
+    MatButtonModule,  
+    MatProgressBarModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -40,7 +47,13 @@ import { ModalComponent } from './modal/modal.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

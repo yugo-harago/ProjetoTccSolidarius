@@ -7,7 +7,9 @@ using SolidariusAPI.Api.Models;
 using SolidariusAPI.Api.TransferObjects;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace SolidariusAPI.Api.Controllers
@@ -117,6 +119,72 @@ namespace SolidariusAPI.Api.Controllers
             //            left join mediador as m on u.UsuarioId = m.UsuarioId 
             //        where u.UsuarioId = :userId");
             //query.SetInt32("userId", userId);
+        }
+
+        [HttpPost("images")]
+        public IActionResult UserImage([FromForm]int userId)
+        {
+            string PathDB = "../../DB/Images";
+
+            if (HttpContext.Request.Form.Files == null)
+            {
+                return NoContent();
+            }
+
+            var files = HttpContext.Request.Form.Files;
+            if (files.Count != 1)
+            {
+                return BadRequest();
+            }
+            var file = files[0];
+            if (file.Length < 0)
+            {
+                return NoContent();
+            }
+
+
+            //Getting FileName
+            var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+
+            //Assigning Unique Filename (Guid)
+            var uniqueFileName = Convert.ToString(Guid.NewGuid());
+
+            //Getting file Extension
+            var FileExtension = Path.GetExtension(fileName);
+
+            // concating  FileName + FileExtension
+            var newFileName = uniqueFileName + FileExtension;
+
+            // Combines two strings into a path.
+            fileName = PathDB + $@"\{ newFileName}";
+
+            // if you want to store path of folder in database
+            PathDB = "Images/" + newFileName;
+
+            using (FileStream fs = System.IO.File.Create(fileName))
+            {
+                file.CopyTo(fs);
+                fs.Flush();
+            }
+            if (userId != 0)
+            {
+                var user = context.Usuario.Find(userId);
+                user.FotoUsuario = PathDB;
+                context.Update(user);
+            } else
+            {
+                return Ok(new { path = PathDB});
+            }
+
+            return Ok();
+        }
+        [HttpGet("image/{userId}")]
+        public async Task<IActionResult> Get([FromRoute]int userId)
+        {
+            string PathDB = "../../DB/";
+            var user = context.Usuario.Find(userId);
+            var image = System.IO.File.OpenRead(PathDB + user.FotoUsuario);
+            return File(image, "image/jpeg");
         }
     }
 }
