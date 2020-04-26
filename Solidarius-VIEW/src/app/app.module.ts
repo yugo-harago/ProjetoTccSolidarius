@@ -16,6 +16,8 @@ import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentUserHeaderComponent } from './user/student-user/student-user-header/student-user-header.component';
 import { GiverUserHeaderComponent } from './user/giver-user/giver-user-header/giver-user-header.component';
+import { MediatorHeaderComponent } from './user/mediator/mediator-header/mediator-header.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { GiverUserHeaderComponent } from './user/giver-user/giver-user-header/gi
     LandingPageComponent,
     UserComponent,
     StudentUserHeaderComponent,
-    GiverUserHeaderComponent
+    GiverUserHeaderComponent,
+    MediatorHeaderComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

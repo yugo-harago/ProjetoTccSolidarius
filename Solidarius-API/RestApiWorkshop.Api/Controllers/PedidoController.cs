@@ -66,6 +66,8 @@ namespace SolidariusAPI.Api.Controllers
             newPedido.Estado = Estado.Aguardando;
             foreach (var item in newPedido.Item)
             {
+                item.DataCriacao = DateTime.Now;
+                item.DataModificacao = DateTime.Now;
                 await context.InsertAsync(item);
             }
             newPedido = await context.InsertAsync(newPedido);
@@ -90,7 +92,9 @@ namespace SolidariusAPI.Api.Controllers
             }
             if(userType == UserType.Mediador)
             {
-                var pedidos = context.Pedido.ProjectTo<PedidoDto>(mapper.ConfigurationProvider);
+                var pedidos = context.Pedido
+                                .Where(w => w.AceitoPor != null && w.FeitoPor != null)
+                                .ProjectTo<PedidoDto>(mapper.ConfigurationProvider);
                 return Ok(pedidos);
             }
             return BadRequest();
@@ -144,6 +148,23 @@ namespace SolidariusAPI.Api.Controllers
             notificacao.Visto = false;
             notificacao.Confirmado = false;
             context.Update(notificacao);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{pedidoId}")]
+        public IActionResult Delete([FromRoute]int pedidoId)
+        {
+            context.Delete(context.Pedido.Find(pedidoId));
+            return NoContent();
+        }
+
+        [HttpPut("confirm/{id}")]
+        public IActionResult Confirm([FromRoute]int id)
+        {
+            var pedido = context.Pedido.Find(id);
+            pedido.Estado = Estado.Concluido;
+            context.Update(pedido);
 
             return NoContent();
         }

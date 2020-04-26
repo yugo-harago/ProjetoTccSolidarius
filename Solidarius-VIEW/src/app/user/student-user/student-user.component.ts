@@ -8,6 +8,8 @@ import { Categoria } from '../../enums/categoria.enum';
 import { ItemModel } from '../../models/item-model';
 import { NotificationService } from '../../notification.service';
 import { SessionStorageService } from '../../session-storage.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from '../../modal/modal.component';
 
 @Component({
   selector: 'app-student-user',
@@ -26,7 +28,8 @@ export class StudentUserComponent implements OnInit {
 
     constructor(
         private pedidoService: PedidoService,
-        private notificatication: NotificationService
+        private notification: NotificationService,
+        //private modalService: NgbModal
     ) { }
 
     ngOnInit() {
@@ -50,15 +53,25 @@ export class StudentUserComponent implements OnInit {
         this.newPedido.item.push(new ItemModel());
     }
     public novoPedido() {
-        this.pedidoService.addPedido(this.newPedido).subscribe(
+        this.pedidoService.add(this.newPedido).subscribe(
             () => {
                 this.setNewPedido();
-                this.notificatication.popNotification('Seu pedido foi postado com sucesso!');
+                this.notification.popNotification('Seu pedido foi postado com sucesso!');
                 this.getPedidos();
             }
         );
     }
     public changeCategoria(categoriaNumber: string, item: ItemModel){
         item.categoria = Number(categoriaNumber);
+    }
+
+    public removePedido(pedidoId: number) {
+        this.pedidoService.remove(pedidoId).subscribe(
+            () => {
+                this.notification.popNotification('Pedido removido.');
+            }
+        );
+        // const modalRef = this.modalService.open(ModalComponent);
+        // modalRef.componentInstance.name = 'World';
     }
 }

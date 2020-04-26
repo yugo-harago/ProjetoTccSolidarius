@@ -98,6 +98,11 @@
                                 </div>
                                 <div class="card mb-3" *ngFor="let pedido of pedidos">
                                     <div class="card-body">
+                                        <div class="row remove">
+                                            <div class="col-12 text-right">
+                                                <a (click)="removePedido(pedido.id)"><i class="fas fa-remove"></i></a>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <h4>{{ pedido.titulo }}</h4>

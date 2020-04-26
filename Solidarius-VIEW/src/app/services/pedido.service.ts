@@ -24,13 +24,19 @@ export class PedidoService {
     public donate(pedidoId: number) {
         return this.api.put(this.url + '/donate/' + this.sessionService.getUser().userId + '/' + pedidoId, null);
     }
-    public getByUser() {
+    public getByUser(): Observable<Array<PedidoModel>> {
         const user = this.sessionService.getUser();
         return this.api.get(this.url + '/user/' + user.userType + '/' + user.userId);
     }
-    public addPedido(newPedido: PedidoModel) {
+    public add(newPedido: PedidoModel) {
         const feitoPor = this.sessionService.getUser().userId;
         return this.api.post(this.url + '/' + feitoPor, newPedido);
+    }
+    public remove(pedidoId: number) {
+        return this.api.delete(this.url + '/' + pedidoId);
+    }
+    public confirm(pedidoId: number): Observable<any> {
+        return this.api.put(this.url + '/confirm/' + pedidoId, null);
     }
 
 

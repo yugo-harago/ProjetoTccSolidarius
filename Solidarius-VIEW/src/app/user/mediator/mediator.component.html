@@ -1,3 +1,152 @@
-<p>
-  mediator works!
-</p>
+<app-mediator-header></app-mediator-header>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col mb-2">
+                            <h4 class="text-center">Entregas</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngFor="let pedido of pedidos">
+        <div class="col">
+            <div class="card mb-3">
+                <div class="card-body pt-2">
+                    <div class="row">
+                        <div class="col-3" id="doador">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <img
+                                                class="rounded-circle"
+                                                [src]="'../../assets/img/' + pedido.aceitoPor.fotoUsuario"
+                                                width="60"
+                                                height="60"
+                                                alt="Foto do Doador">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4 class="text-center">Sobre doador</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <ul class="list-unstyled">
+                                        <li>Nome: {{ pedido.aceitoPor.nome}}</li>
+                                        <li>ID: {{ pedido.aceitoPor.id }}</li>
+                                        <li>Telefone: {{ pedido.aceitoPor.telefone }}</li>
+                                        <li>E-mail: {{ pedido.aceitoPor.email }}</li>
+                                        <li>Documento: {{ pedido.aceitoPor.documento }}</li>
+                                        <li>Data de início: {{ pedido.aceitoPor.dataCriacao }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col" id="pedido">
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <div class="row" *ngIf="pedido.estado === estado.emAndamento">
+                                        <div class="col">
+                                            <p class="text-right text-success d-xl-flex justify-content-xl-end mb-0">
+                                                <i class="fa fa-circle justify-content-xl-end mr-2 pt-1"></i>
+                                                <span class="justify-content-xl-end">Esperando a entrega</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="pedido.estado === estado.concluido">
+                                        <div class="col">
+                                            <p class="text-right text-muted d-xl-flex justify-content-xl-end mb-0">
+                                                <i class="fa fa-circle justify-content-xl-end mr-2 pt-1"></i>
+                                                <span class="justify-content-xl-end">Pedido concluído</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <h4 class="mb-0">{{ pedido.titulo }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <p>{{ pedido.descricao }}</p>
+                                    <div class="row" *ngFor="let item of pedido.item">
+                                        <div class="col">
+                                            <hr>
+                                            <h5>{{ item.descricao }}</h5>
+                                            <span class="text-secondary justify-content-xl-end">Categoria : {{ categoria[item.categoria] }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3" id="beneficiario">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <img
+                                                class="rounded-circle"
+                                                [src]="'../../assets/img/' + pedido.feitoPor.fotoUsuario"
+                                                width="60"
+                                                height="60"
+                                                alt="Foto do estudante">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4 class="text-center">Sobre o benefiniário</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <ul class="list-unstyled">
+                                        <li>Nome: {{ pedido.feitoPor.nome }}</li>
+                                        <li>ID: {{ pedido.feitoPor.id }}</li>
+                                        <li>Telefone: {{ pedido.feitoPor.telefone }}</li>
+                                        <li>E-mail: {{ pedido.feitoPor.email }}</li>
+                                        <li>Documento: {{ pedido.feitoPor.documento }}</li>
+                                        <li *ngIf="pedido.feitoPor.ra">RA: {{ pedido.feitoPor.ra }}</li>
+                                        <li *ngIf="pedido.feitoPor.interno">Interno: sim</li><li *ngIf="!pedido.feitoPor.interno">Interno: não</li>
+                                        <li>Data de iníncio: {{ pedido.feitoPor.dataCriacao }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="pedido.estado == estado.emAndamento">
+                        <div class="col text-center">
+                            <button class="btn btn-primary" type="button" (click)="confirmarEntregue(pedido.id)">
+                                <i class="fa fa-check"></i>
+                                <span class="ml-1">Confirmar entrega</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="pedido.estado == estado.concluido">
+                        <div class="col text-center">
+                            <button class="btn btn-disable" disabled type="button"style="
+                                background-color: #cac0c0;
+                            ">
+                                <i class="fa fa-check"></i>
+                                <span class="text-light ml-1">Entregado</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
