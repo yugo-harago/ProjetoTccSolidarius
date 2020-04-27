@@ -1,0 +1,2 @@
+<app-student-user-recebidos *ngIf="sessionStorage.getUser().userType == userTypeEnum.beneficiario"></app-student-user-recebidos>
+<app-giver-user-concluidos *ngIf="sessionStorage.getUser().userType == userTypeEnum.doador"></app-giver-user-concluidos>

@@ -19,6 +19,7 @@ namespace SolidariusAPI.Api.TransferObjects
         public string Descricao { get; set; }
         public string Titulo { get; set; }
         public IList<Item> Item { get; set; } = new List<Item>();
+        public string Agradecimento { get; set; }
         public Usuario FeitoPor { get; set; }
         public Usuario AceitoPor { get; set; }
     }

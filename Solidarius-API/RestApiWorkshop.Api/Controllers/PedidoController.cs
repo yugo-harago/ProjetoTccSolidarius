@@ -168,5 +168,40 @@ namespace SolidariusAPI.Api.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("user/{userTypeInt}/{userId}/concluidos")]
+        public IActionResult GetRecieveds(int userTypeInt, int userId)
+        {
+            IQueryable<PedidoDto> pedidos = null;
+            if ((int)UserType.Beneficiario == userTypeInt)
+            {
+                pedidos = context.Pedido
+                                    .Where(w => w.FeitoPor.Id == userId)
+                                    .Where(w => w.Estado == Estado.Concluido)
+                                    .ProjectTo<PedidoDto>(mapper.ConfigurationProvider);
+            }else if ((int)UserType.Doador == userTypeInt)
+            {
+                pedidos = context.Pedido
+                                    .Where(w => w.AceitoPor.Id == userId)
+                                    .Where(w => w.Estado == Estado.Concluido)
+                                    .ProjectTo<PedidoDto>(mapper.ConfigurationProvider);
+            }
+            if(pedidos == null)
+            {
+                return NoContent();
+            }
+
+            return Ok(pedidos);
+        }
+
+        [HttpPost("{pedidoId}/thanks")]
+        public IActionResult Thanks([FromRoute] int pedidoId, [FromForm] string thanks)
+        {
+            var pedido = context.Pedido.Where(w => w.Id == pedidoId).FirstOrDefault();
+            pedido.Agradecimento = thanks;
+            context.Update(pedido);
+
+            return NoContent();
+        }
     }
 }

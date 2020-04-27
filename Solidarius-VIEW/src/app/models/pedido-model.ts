@@ -12,6 +12,7 @@ export class PedidoModel {
     public dataCriacao: Date;
     public comentario: string;
     public dataModificacao: Date;
+    public agradecimento: string;
     public item: Array<ItemModel>;
     public feitoPor: BeneficiarioModel;
     public aceitoPor: DoadorModel;

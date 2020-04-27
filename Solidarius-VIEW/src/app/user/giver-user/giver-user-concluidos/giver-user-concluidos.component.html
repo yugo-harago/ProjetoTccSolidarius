@@ -1,0 +1,76 @@
+<app-giver-user-header></app-giver-user-header>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col mb-2">
+                            <h4 class="text-center">Pedidos enviados</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3" *ngFor="let pedido of pedidos">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h4>{{ pedido.titulo }}</h4>
+                </div>
+                <div class="col text-right" id="petition-notification" *ngIf="pedido.estado === estado.aguardando">
+                    <p class="text-success d-xl-flex justify-content-xl-end">
+                        <i class="fa fa-circle justify-content-xl-end mr-2 pt-1"></i>
+                        <span class="justify-content-xl-end">Ativo</span>
+                    </p>
+                </div>
+                <div class="col text-right" id="petition-notification" *ngIf="pedido.estado !== estado.aguardando">
+                    <p class="text-muted d-xl-flex justify-content-xl-end">
+                        <i class="fa fa-circle justify-content-xl-end mr-2 pt-1"></i>
+                        <span class="justify-content-xl-end">Ativo</span>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="d-xl-flex justify-content-xl-end mb-0">
+                        <span class="text-secondary justify-content-xl-end">Categoria :</span>
+                        <ng-template ngFor let-item [ngForOf]="pedido.item" let-i="index">
+                            <span class="text-secondary ml-2">{{ categoriaEnum[item.categoria] }}</span>
+                        </ng-template>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>{{ pedido.descricao }}</p>
+                </div>
+            </div>
+            <div class="row" *ngIf="pedido.agradecimento">
+                <div class="col">
+                    <hr>
+                    <p>
+                        {{ pedido.agradecimento }}
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="row" *ngIf="pedido.estado === estado.aguardando">
+                <div class="col text-right">
+                    <span class="text-primary" id="petition-money">Ativo Em Espera</span>
+                </div>
+            </div>
+            <div class="row" *ngIf="pedido.estado === estado.emAndamento">
+                <div class="col text-right">
+                    <span class="text-info" id="petition-money">Em Processo</span>
+                </div>
+            </div>
+            <div class="row" *ngIf="pedido.estado === estado.concluido">
+                <div class="col text-right">
+                    <span class="text-secondary" id="petition-money">Recebido!</span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

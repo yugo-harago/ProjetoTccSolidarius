@@ -20,5 +20,6 @@ namespace SolidariusAPI.Api.Models
         public IList<Item> Item { get; set; }
         public Usuario FeitoPor { get; set; }
         public Usuario AceitoPor { get; set; }
+        public string Agradecimento { get; set; }
     }
 }

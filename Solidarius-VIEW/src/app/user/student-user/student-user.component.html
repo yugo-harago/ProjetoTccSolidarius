@@ -8,7 +8,7 @@
                         <div class="col text-center p-3">
                             <img
                                 class="rounded-circle border border-primary shadow-sm"
-                                [src]="'http://localhost:53905/user/image/' + beneficiario.id"
+                                [src]="'http://localhost:53905/user/image/' + beneficiario?.id"
                                 width="120px"
                                 height="120px"></div>
                         </div>
@@ -79,7 +79,7 @@
                                             </div>
                                             <hr>
                                             <div class="form-row">
-                                                <div class="col">
+                                                <!-- <div class="col">
                                                     <div class="form-row text-center d-flex align-items-lg-center">
                                                         <div class="col">
                                                             <i class="fa fa-image post-icons"></i>
@@ -88,7 +88,7 @@
                                                             <i class="fa fa-smile-o post-icons"></i>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="col text-right">
                                                     <button class="btn btn-primary" type="submit">Postar</button>
                                                 </div>

@@ -7,7 +7,12 @@
         <div class="card-body">
             <div class="row">
                 <div class="col text-center p-4">
-                    <img class="rounded-circle" [src]="'../../../assets/img/' + usuario.fotoUsuario" width="120" height="120"></div>
+                    <img *ngIf="usuario"
+                    class="rounded-circle" 
+                    width="120" 
+                    height="120"
+                    [src]="'http://localhost:53905/user/image/' + usuario.id"
+                    ></div>
             </div>
             <div class="row">
                 <div class="col">
@@ -16,23 +21,23 @@
                             <tbody>
                                 <tr>
                                     <td>Nome</td>
-                                    <td>{{ usuario.nome }}</td>
+                                    <td>{{ usuario?.nome }}</td>
                                 </tr>
                                 <tr>
                                     <td>E-mail</td>
-                                    <td>{{ usuario.email }}</td>
+                                    <td>{{ usuario?.email }}</td>
                                 </tr>
                                 <tr>
                                     <td>Telefone</td>
-                                    <td>{{ usuario.telefone }}</td>
+                                    <td>{{ usuario?.telefone }}</td>
                                 </tr>
                                 <tr>
                                     <td>Documento</td>
-                                    <td>{{ usuario.documento }}</td>
+                                    <td>{{ usuario?.documento }}</td>
                                 </tr>
                                 <tr *ngIf="beneficiario?.ra">
                                     <td>RA</td>
-                                    <td>{{ beneficiario.ra }}</td>
+                                    <td>{{ beneficiario?.ra }}</td>
                                 </tr>
                             </tbody>
                         </table>

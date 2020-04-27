@@ -25,6 +25,9 @@ import { MatToolbarModule,
     MatCardModule,  
     MatButtonModule,  
     MatProgressBarModule } from '@angular/material';
+import { StudentUserRecebidosComponent } from './user/student-user/student-user-recebidos/student-user-recebidos.component';
+import { GiverUserConcluidosComponent } from './user/giver-user/giver-user-concluidos/giver-user-concluidos.component';
+import { ConcluidosComponent } from './account/concluidos/concluidos.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { MatToolbarModule,
     StudentUserHeaderComponent,
     GiverUserHeaderComponent,
     MediatorHeaderComponent,
-    ModalComponent
+    ModalComponent,
+    StudentUserRecebidosComponent,
+    GiverUserConcluidosComponent,
+    ConcluidosComponent
   ],
   imports: [
     BrowserModule,

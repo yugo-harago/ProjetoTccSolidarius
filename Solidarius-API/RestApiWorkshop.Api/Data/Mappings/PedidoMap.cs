@@ -25,6 +25,7 @@ namespace SolidariusAPI.Api.Data.Mappings
             HasMany(x => x.Item).Table("Item").KeyColumn("PedidoId").ReadOnly();
             References(x => x.FeitoPor).Column("FeitoPor").Cascade.None();
             References(x => x.AceitoPor).Column("AceitoPor").Cascade.None();
+            Map(x => x.Agradecimento).Column("Agradecimento");
         }
     }
 }
