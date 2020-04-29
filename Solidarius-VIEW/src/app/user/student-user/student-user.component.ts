@@ -23,6 +23,7 @@ export class StudentUserComponent implements OnInit {
     public categoriaEnum: typeof Categoria = Categoria;
     public pedidos: Array<PedidoModel>;
     public recebidos = 0;
+    public showNovoPedido = false;
 
     public newPedido: PedidoModel;
 
@@ -34,7 +35,6 @@ export class StudentUserComponent implements OnInit {
 
     ngOnInit() {
         this.getPedidos();
-        this.setNewPedido();
     }
     public setNewPedido() {
         this.newPedido = new PedidoModel();
@@ -73,5 +73,15 @@ export class StudentUserComponent implements OnInit {
         );
         // const modalRef = this.modalService.open(ModalComponent);
         // modalRef.componentInstance.name = 'World';
+    }
+
+    public novoPedidoBtn(show: boolean){
+        if(show){
+            this.showNovoPedido = true;
+            this.setNewPedido();
+        }else{
+            this.showNovoPedido = false;
+            this.newPedido = null;
+        }
     }
 }

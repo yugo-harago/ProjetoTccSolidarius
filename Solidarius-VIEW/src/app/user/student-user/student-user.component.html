@@ -34,73 +34,83 @@
                         <div class="col">
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <form (ngSubmit)="novoPedido()">
-                                        <div class="form-row mb-3">
-                                            <div class="col">
-                                                <input class="form-control" type="text" placeholder="Título" name="titulo" [(ngModel)]="newPedido.titulo"></div>
-                                            </div>
+                                    <div class="row mb-3" *ngIf="!showNovoPedido">
+                                        <div class="col text-center">
+                                            <button class="btn btn-primary" type="button" (click)="novoPedidoBtn(true)">Fazer um pedido</button>
+                                        </div>
+                                    </div>
+                                    <ng-template [ngIf]="showNovoPedido">
+                                        <form (ngSubmit)="novoPedido()">
                                             <div class="form-row mb-3">
                                                 <div class="col">
-                                                    <textarea
-                                                        class="border rounded form-control form-control-lg d-flex d-lg-flex justify-content-lg-center"
-                                                        autocomplete="off"
-                                                        spellcheck="true"
-                                                        required=""
-                                                        minlength="10"
-                                                        maxlength="10000"
-                                                        placeholder="Qual a sua dificuldade?"
-                                                        style="height: 100px;"
-                                                        name="descricao"
-                                                        [(ngModel)]="newPedido.descricao"></textarea>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="mb-3 ml-3" *ngFor="let item of newPedido.item">
-                                                <div class="form-row mb-3">
-                                                    <div class="col">
-                                                        <input class="form-control" type="text" placeholder="Descrição do item" name="item" [(ngModel)]="item.descricao">
-                                                    </div>
+                                                    <input class="form-control" type="text" placeholder="Título" name="titulo" [(ngModel)]="newPedido.titulo"></div>
                                                 </div>
                                                 <div class="form-row mb-3">
                                                     <div class="col">
-                                                        <select class="form-control form-control-lg btn-sm" (change)="changeCategoria($event.target.value, item)">
-                                                            <option selected>Categoria</option>
-                                                            <option [value]="categoriaEnum.comida">Comida</option>
-                                                            <option [value]="categoriaEnum.higiene">Higiene</option>
-                                                            <option [value]="categoriaEnum.roupa">Roupa</option>
-                                                        </select>
+                                                        <textarea
+                                                            class="border rounded form-control form-control-lg d-flex d-lg-flex justify-content-lg-center"
+                                                            autocomplete="off"
+                                                            spellcheck="true"
+                                                            required=""
+                                                            minlength="10"
+                                                            maxlength="10000"
+                                                            placeholder="Qual a sua dificuldade? Descreva bem os seus pedidos."
+                                                            style="height: 100px;"
+                                                            name="descricao"
+                                                            [(ngModel)]="newPedido.descricao"></textarea>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="form-row mb-3">
-                                                    <div class="col">
-                                                        <input class="form-control" type="text" placeholder="Título" name="titulo" [(ngModel)]="newPedido.titulo"></div
-                                                    </div>
-                                                </div> -->
-                                                <div class="form-row mb-3">
-                                                    <div class="col text-right">
-                                                        <button class="btn btn-primary" type="button" (click)="novoItem()"><i class="fas fa-plus"></i> Novo item</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="form-row">
-                                                <!-- <div class="col">
-                                                    <div class="form-row text-center d-flex align-items-lg-center">
+                                                <hr>
+                                                <div class="mb-3 ml-3" *ngFor="let item of newPedido.item">
+                                                    <div class="form-row mb-3">
                                                         <div class="col">
-                                                            <i class="fa fa-image post-icons"></i>
-                                                        </div>
-                                                        <div class="col">
-                                                            <i class="fa fa-smile-o post-icons"></i>
+                                                            <input class="form-control" type="text" placeholder="Descrição do item" name="item" [(ngModel)]="item.descricao">
                                                         </div>
                                                     </div>
-                                                </div> -->
+                                                    <div class="form-row mb-3">
+                                                        <div class="col">
+                                                            <select class="form-control form-control-lg btn-sm" (change)="changeCategoria($event.target.value, item)">
+                                                                <option selected>Categoria</option>
+                                                                <option [value]="categoriaEnum.comida">Comida</option>
+                                                                <option [value]="categoriaEnum.higiene">Higiene</option>
+                                                                <option [value]="categoriaEnum.roupa">Roupa</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="form-row mb-3">
+                                                        <div class="col">
+                                                            <input class="form-control" type="text" placeholder="Título" name="titulo" [(ngModel)]="newPedido.titulo"></div
+                                                        </div>
+                                                    </div> -->
+                                                    <div class="form-row mb-3">
+                                                        <div class="col text-right">
+                                                            <button class="btn btn-primary" type="button" (click)="novoItem()"><i class="fas fa-plus"></i> Novo item</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="form-row">
+                                                    <!-- <div class="col">
+                                                        <div class="form-row text-center d-flex align-items-lg-center">
+                                                            <div class="col">
+                                                                <i class="fa fa-image post-icons"></i>
+                                                            </div>
+                                                            <div class="col">
+                                                                <i class="fa fa-smile-o post-icons"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
                                                 <div class="col text-right">
                                                     <button class="btn btn-primary" type="submit">Postar</button>
                                                 </div>
+                                                <div class="col text-center">
+                                                    <button class="btn btn-primary" type="button" (click)="novoPedidoBtn(false)">Cancelar</button>
+                                                </div>
                                             </div>
                                         </form>
-                                    </div>
+                                    </ng-template>
                                 </div>
+                            </div>
                                 <div class="card mb-3" *ngFor="let pedido of pedidos">
                                     <div class="card-body">
                                         <div class="row remove">

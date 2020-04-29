@@ -62,10 +62,13 @@
                             <div class="dropdown">
                                 <select class="btn btn-light dropdown-toggle" role="menu" (change)="userType = $event.target.value">
                                     <option selected *ngIf="!userType">Escolha uma opção</option>
-                                    <option class="dropdown-item" role="presentation" [value]="userTypeEnum.beneficiario">Estudante</option>
+                                    <option class="dropdown-item" role="presentation" [value]="userTypeEnum.beneficiario">Beneficiário</option>
                                     <option class="dropdown-item" role="presentation" [value]="userTypeEnum.doador">Doador</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="col-sm-4 label-column">
+                            <label class="col-form-label" for="dropdown-input-field">Observação: A conta de beneficiário é permitida apenas para os alunos do colégio unasp</label>
                         </div>
                     </div>
                     <div class="form-row form-group" *ngIf="userType == userTypeEnum.beneficiario">
@@ -96,7 +99,7 @@
                             <mat-card-actions *ngIf="!imageOk">  
                                 <button mat-button color="warn" type="button" (click)="fileUploadClick()">  
                                     <mat-icon>file_upload</mat-icon>  
-                                    Upload  
+                                    Envie uma foto do seu perfil  
                                 </button>  
                             </mat-card-actions>  
                             <mat-card-actions *ngIf="imageOk">  
