@@ -11,6 +11,6 @@ INSERT INTO Beneficiario VALUES(1,0,1234,1);
 INSERT INTO Doador VALUES(1,2);
 
 INSERT INTO Item VALUES(1,NULL,NULL,'2020-04-23 00:00:00','2020-04-23 00:00:00','Agasalho',1,1);
-INSERT INTO Pedido VALUES(1,0,10,'2020-04-23 20:00:33.2127483',NULL,'2020-04-23 20:00:33.2128659','Olá, o inverno está chegando e gostaria de pedir um agasalho para não passar frino dentro do internato.','Pedido de agasalho',1,NULL);
+INSERT INTO Pedido VALUES(1,0,10,'2020-04-23 20:00:33.2127483',NULL,'2020-04-23 20:00:33.2128659','Olá, o inverno está chegando e gostaria de pedir um agasalho para não passar frino dentro do internato.','Pedido de agasalho',NULL,1,NULL);
 
 COMMIT;
