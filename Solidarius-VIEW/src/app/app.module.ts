@@ -20,11 +20,11 @@ import { MediatorHeaderComponent } from './user/mediator/mediator-header/mediato
 import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatToolbarModule,  
-    MatIconModule,  
-    MatCardModule,  
-    MatButtonModule,  
-    MatProgressBarModule } from '@angular/material';
+import { MatToolbarModule,
+        MatIconModule,
+        MatCardModule,
+        MatButtonModule,
+        MatProgressBarModule } from '@angular/material';
 import { StudentUserRecebidosComponent } from './user/student-user/student-user-recebidos/student-user-recebidos.component';
 import { GiverUserConcluidosComponent } from './user/giver-user/giver-user-concluidos/giver-user-concluidos.component';
 import { ConcluidosComponent } from './account/concluidos/concluidos.component';
